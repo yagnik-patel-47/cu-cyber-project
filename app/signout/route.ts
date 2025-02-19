@@ -13,5 +13,11 @@ export async function GET() {
 
 	await invalidateSession(session.id);
 	await deleteSessionTokenCookie();
-	redirect("/");
+
+	return new Response(null, {
+		status: 302,
+		headers: {
+			Location: "/",
+		},
+	});
 }
