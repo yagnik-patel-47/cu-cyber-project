@@ -178,7 +178,7 @@ const PasswordChecker = () => {
 								<div className="flex items-center space-x-2 text-green-600 dark:text-green-400">
 									<Shield className="h-4 w-4" />
 									<span>
-										This password hasn't been found in known data breaches.
+										This password hasn&apos;t been found in known data breaches.
 									</span>
 								</div>
 							)}

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Calendar, Clock, ChevronLeft, ChevronRight } from "lucide-react";
+import { Calendar, ChevronLeft, ChevronRight } from "lucide-react";
 import React from "react";
 import Nav from "./site-nav";
 
@@ -11,7 +11,7 @@ interface Props {
 export default function BlogTemplate(props: Props) {
 	return (
 		<React.Fragment>
-			<Nav solidBg />
+			<Nav />
 			<main className="flex-1">
 				<article className="mx-auto py-10 max-sm:px-4 max-w-prose w-full">
 					<Link

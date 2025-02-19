@@ -29,7 +29,7 @@ export async function GET(request: Request): Promise<Response> {
 	let tokens: OAuth2Tokens;
 	try {
 		tokens = await github.validateAuthorizationCode(code);
-	} catch (e) {
+	} catch (_e) {
 		// Invalid code or client credentials
 		return new Response(null, {
 			status: 400,

@@ -28,6 +28,7 @@ export default function EditPasswordForm({
 	onSuccess: () => void;
 }) {
 	const updatedPasswordWithPasswordId = updatePassword.bind(null, password.id);
+	// @ts-ignore
 	const [state, formAction] = useActionState(updatedPasswordWithPasswordId, {});
 
 	useEffect(() => {

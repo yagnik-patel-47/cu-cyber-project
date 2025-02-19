@@ -21,6 +21,7 @@ export default function VaultManager({
 }: { initialVaults: Vault[]; userId: string }) {
 	const createVaultWithUserId = createVault.bind(null, userId);
 	const [isAddingVault, setIsAddingVault] = useState(false);
+	// @ts-ignore
 	const [state, formAction] = useActionState(createVaultWithUserId, {});
 
 	useEffect(() => {

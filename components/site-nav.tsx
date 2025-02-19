@@ -10,7 +10,6 @@ import {
 	NavigationMenuList,
 	NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
-import { ShieldCheck, FolderKanban, ScanText } from "lucide-react";
 import { cva } from "class-variance-authority";
 
 const navigationMenuTriggerStyle = cva(

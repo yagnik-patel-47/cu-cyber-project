@@ -2,7 +2,7 @@ import { generateState } from "arctic";
 import { github } from "@/lib/auth/oauth";
 import { cookies } from "next/headers";
 
-export async function GET(): Promise<Response> {
+export async function GET() {
 	const state = generateState();
 	const url = github.createAuthorizationURL(state, ["user:email"]);
 

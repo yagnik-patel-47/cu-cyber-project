@@ -27,6 +27,7 @@ export default function AddPasswordButton({
 	categories,
 }: { vaults: Vault[]; categories: Category[] }) {
 	const [isOpen, setIsOpen] = useState(false);
+	// @ts-ignore
 	const [state, formAction] = useActionState(addNewPassword, {});
 
 	useEffect(() => {

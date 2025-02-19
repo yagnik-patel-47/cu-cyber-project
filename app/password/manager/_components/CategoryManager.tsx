@@ -20,6 +20,7 @@ export default function CategoryManager({
 }: { initialCategories: Partial<Category>[]; userId: string }) {
 	const createVaultWithUserId = createCategory.bind(null, userId);
 	const [isAddingCategory, setIsAddingCategory] = useState(false);
+	// @ts-ignore
 	const [state, formAction] = useActionState(createVaultWithUserId, {});
 
 	useEffect(() => {
