@@ -64,36 +64,53 @@ export default async function Nav({ fixed = false }) {
 								</NavigationMenuContent>
 							</NavigationMenuItem>
 							<NavigationMenuItem>
-								<Link legacyBehavior passHref href="/news">
+								<Link prefetch={false} legacyBehavior passHref href="/news">
 									<NavigationMenuLink className={navigationMenuTriggerStyle()}>
 										News
 									</NavigationMenuLink>
 								</Link>
 							</NavigationMenuItem>
 							<NavigationMenuItem>
-								<Link legacyBehavior passHref href="/url-checker">
+								<Link
+									prefetch={false}
+									legacyBehavior
+									passHref
+									href="/url-checker"
+								>
 									<NavigationMenuLink className={navigationMenuTriggerStyle()}>
 										Link Checker
 									</NavigationMenuLink>
 								</Link>
 							</NavigationMenuItem>
 							<NavigationMenuItem>
-								<Link legacyBehavior passHref href="/data-breach">
+								<Link
+									prefetch={false}
+									legacyBehavior
+									passHref
+									href="/data-breach"
+								>
 									<NavigationMenuLink className={navigationMenuTriggerStyle()}>
 										Data Breach Check
 									</NavigationMenuLink>
 								</Link>
 							</NavigationMenuItem>
 							<NavigationMenuItem>
-								<Link
-									href={session.user ? "/signout" : "/login"}
-									legacyBehavior
-									passHref
-								>
-									<NavigationMenuLink className={navigationMenuTriggerStyle()}>
-										{session.user ? "Sign out" : "Login"}
+								{session.user ? (
+									<NavigationMenuLink
+										href="/signout"
+										className={navigationMenuTriggerStyle()}
+									>
+										Sign out
 									</NavigationMenuLink>
-								</Link>
+								) : (
+									<Link href={"/login"} legacyBehavior passHref>
+										<NavigationMenuLink
+											className={navigationMenuTriggerStyle()}
+										>
+											Login
+										</NavigationMenuLink>
+									</Link>
+								)}
 							</NavigationMenuItem>
 						</NavigationMenuList>
 					</NavigationMenu>

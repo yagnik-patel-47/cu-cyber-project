@@ -38,6 +38,7 @@ export default function HomePage() {
 											buttonVariants({ variant: "default" }),
 											"bg-slate-100 text-blue-700 hover:bg-slate-300",
 										)}
+										prefetch={false}
 										href={"/blog"}
 									>
 										Get Started
@@ -49,6 +50,7 @@ export default function HomePage() {
 											"bg-transparent text-white border-white hover:bg-white/10 hover:text-white",
 										)}
 										href={"/about"}
+										prefetch={false}
 									>
 										Learn More
 									</Link>
@@ -128,6 +130,7 @@ export default function HomePage() {
 									<Link
 										className="inline-flex items-center text-blue-600 hover:underline"
 										href={`/blog/${"temp"}`}
+										prefetch={false}
 									>
 										Read more
 										<ChevronRight className="ml-1 h-4 w-4" />
@@ -138,7 +141,7 @@ export default function HomePage() {
 					</div>
 				</section>
 				<section className="w-full py-12 md:py-24 lg:py-32 bg-gray-100">
-					<div className="container max-sm:px-4">
+					<div className="container max-sm:px-4 mx-auto">
 						<div className="flex flex-col items-center justify-center space-y-4 text-center">
 							<div className="space-y-4">
 								<h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
