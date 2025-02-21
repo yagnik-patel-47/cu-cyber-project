@@ -31,7 +31,7 @@ export default async function DataBreach({
 		`https://api.xposedornot.com/v1/breach-analytics?email=${email}`,
 	);
 	const data = await response.json();
-	const breached = data.BreachesSummary.site !== "";
+	const breached = !data.Error || data.BreachesSummary.site !== "";
 	const breaches = data.ExposedBreaches?.breaches_details;
 
 	return (

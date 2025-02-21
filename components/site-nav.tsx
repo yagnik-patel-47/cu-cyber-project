@@ -71,24 +71,14 @@ export default async function Nav({ fixed = false }) {
 								</Link>
 							</NavigationMenuItem>
 							<NavigationMenuItem>
-								<Link
-									prefetch={false}
-									legacyBehavior
-									passHref
-									href="/url-checker"
-								>
+								<Link legacyBehavior passHref href="/url-checker">
 									<NavigationMenuLink className={navigationMenuTriggerStyle()}>
 										Link Checker
 									</NavigationMenuLink>
 								</Link>
 							</NavigationMenuItem>
 							<NavigationMenuItem>
-								<Link
-									prefetch={false}
-									legacyBehavior
-									passHref
-									href="/data-breach"
-								>
+								<Link legacyBehavior passHref href="/data-breach">
 									<NavigationMenuLink className={navigationMenuTriggerStyle()}>
 										Data Breach Check
 									</NavigationMenuLink>
