@@ -12,9 +12,15 @@ import Nav from "@/components/site-nav";
 import React from "react";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { formatDistanceToNow } from "date-fns";
 // import RecentPosts from "@/components/recent-posts";
 
-export default function HomePage() {
+export default async function HomePage() {
+	const res = await fetch(
+		`https://newsapi.org/v2/everything?q=${encodeURIComponent('cybersecurity OR "cyber attack" OR hacking OR "data breach"')}&apiKey=${process.env.NEWS_API_KEY}&pageSize=5`,
+	);
+	const data = await res.json();
+
 	return (
 		<React.Fragment>
 			<Nav fixed />
@@ -111,35 +117,38 @@ export default function HomePage() {
 						</div>
 					</div>
 				</section>
-				<section className="w-full py-12 md:py-24 lg:py-32">
-					<div className="container max-sm:px-4 mx-auto">
-						<h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-8 md:mb-12">
-							Latest Posts
-						</h2>
-						<div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
-							{Array.from({ length: 3 }).map((_, index) => (
-								<div key={index} className="flex flex-col space-y-2">
-									<span className="text-sm text-gray-500">
-										{new Date().toLocaleDateString("en-IN", {
-											dateStyle: "medium",
-										})}
-									</span>
-									<h3 className="text-xl font-bold">
-										Securing Your Remote Workforce: Best Practices for 2023
-									</h3>
-									<Link
-										className="inline-flex items-center text-blue-600 hover:underline"
-										href={`/blog/${"temp"}`}
-										prefetch={false}
-									>
-										Read more
-										<ChevronRight className="ml-1 h-4 w-4" />
-									</Link>
-								</div>
-							))}
+				{data.status === "ok" && (
+					<section className="w-full py-12 md:py-24 lg:py-32">
+						<div className="container max-sm:px-4 mx-auto">
+							<h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-8 md:mb-12">
+								Latest News
+							</h2>
+							<div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
+								{data.articles
+									.slice(0, 3)
+									.map((article: any, index: number) => (
+										<div key={index} className="flex flex-col space-y-2">
+											<span className="text-sm text-gray-500">
+												{formatDistanceToNow(new Date(article.publishedAt), {
+													addSuffix: true,
+												})}
+											</span>
+											<h3 className="text-xl font-bold">{article.title}</h3>
+											<a
+												className="inline-flex items-center text-blue-600 hover:underline"
+												href={article.url}
+												target="_blank"
+												rel="noopener noreferrer"
+											>
+												Read more
+												<ChevronRight className="ml-1 h-4 w-4" />
+											</a>
+										</div>
+									))}
+							</div>
 						</div>
-					</div>
-				</section>
+					</section>
+				)}
 				<section className="w-full py-12 md:py-24 lg:py-32 bg-gray-100">
 					<div className="container max-sm:px-4 mx-auto">
 						<div className="flex flex-col items-center justify-center space-y-4 text-center">
@@ -156,7 +165,7 @@ export default function HomePage() {
 							<div className="w-full max-w-sm space-y-2">
 								<form className="flex space-x-2">
 									<Input
-										className="max-w-lg flex-1"
+										className="max-w-lg bg-white"
 										placeholder="Enter your email"
 										type="email"
 									/>
