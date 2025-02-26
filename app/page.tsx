@@ -39,23 +39,22 @@ export default async function HomePage() {
 									</p>
 								</div>
 								<div className="flex flex-col gap-2 min-[400px]:flex-row">
-									<Link
+									<a
 										className={cn(
 											buttonVariants({ variant: "default" }),
 											"bg-slate-100 text-blue-700 hover:bg-slate-300",
 										)}
-										prefetch={false}
-										href={"/blog"}
+										href={"#features"}
 									>
 										Get Started
 										<ChevronRight className="ml-2 h-4 w-4" />
-									</Link>
+									</a>
 									<Link
 										className={cn(
 											buttonVariants({ variant: "outline" }),
 											"bg-transparent text-white border-white hover:bg-white/10 hover:text-white",
 										)}
-										href={"/about"}
+										href={"#"}
 										prefetch={false}
 									>
 										Learn More
@@ -82,38 +81,53 @@ export default async function HomePage() {
 					</div>
 				</section>
 
-				<section className="w-full py-12 md:py-24 lg:py-32 bg-gray-100">
+				<section
+					id="features"
+					className="w-full py-12 md:py-12 lg:py-20 bg-gray-100"
+				>
 					<div className="container max-sm:px-4 mx-auto">
 						<div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
-							<div className="flex flex-col items-center space-y-4 text-center">
+							<Link
+								href="/password/manager"
+								className="flex flex-col items-center space-y-4 text-center hover:bg-zinc-200 px-4 py-6 md:py-12 rounded-lg transition"
+							>
 								<Lock className="size-10 text-blue-700" />
 								<h2 className="text-xl font-bold">Password Manager</h2>
 								<p className="text-gray-500 dark:text-gray-400">
 									Securely store and manage all your passwords in one place.
 								</p>
-							</div>
-							<div className="flex flex-col items-center space-y-4 text-center">
+							</Link>
+							<Link
+								href="/news"
+								className="flex flex-col items-center space-y-4 text-center hover:bg-zinc-200 px-4 py-6 md:py-12 rounded-lg transition"
+							>
 								<Newspaper className="size-10 text-blue-700" />
 								<h2 className="text-xl font-bold">Cybersecurity News</h2>
 								<p className="text-gray-500 dark:text-gray-400">
 									Stay informed with the latest cybersecurity news and trends.
 								</p>
-							</div>
-							<div className="flex flex-col items-center space-y-4 text-center">
+							</Link>
+							<Link
+								href="/url-checker"
+								className="flex flex-col items-center space-y-4 text-center hover:bg-zinc-200 px-4 py-6 md:py-12 rounded-lg transition"
+							>
 								<LinkLucide className="size-10 text-blue-700" />
 								<h2 className="text-xl font-bold">Phishing URL Checker</h2>
 								<p className="text-gray-500 dark:text-gray-400">
 									Verify suspicious links to protect yourself from phishing
 									attacks.
 								</p>
-							</div>
-							<div className="flex flex-col items-center space-y-4 text-center">
+							</Link>
+							<Link
+								href="/data-breach"
+								className="flex flex-col items-center space-y-4 text-center hover:bg-zinc-200 px-4 py-6 md:py-12 rounded-lg transition"
+							>
 								<AlertTriangle className="size-10 text-blue-700" />
 								<h2 className="text-xl font-bold">Data Breach Checker</h2>
 								<p className="text-gray-500 dark:text-gray-400">
 									Find out if your data has been compromised in known breaches
 								</p>
-							</div>
+							</Link>
 						</div>
 					</div>
 				</section>
