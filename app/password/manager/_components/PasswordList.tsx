@@ -82,51 +82,56 @@ function PasswordItem({
 	const [showPassword, setShowPassword] = useState(false);
 
 	return (
-		<div className="bg-white shadow-md rounded-lg p-4 flex justify-between items-center">
-			<div>
-				<h3 className="text-lg font-semibold">{password.title}</h3>
-				<p className="text-gray-600">{password.username}</p>
-				<p className="text-gray-600">
-					Password: {showPassword ? password.password : "••••••••"}
-					<Button
-						variant="ghost"
-						size="sm"
-						onClick={() => setShowPassword(!showPassword)}
-						className="ml-2"
-					>
-						{showPassword ? "Hide" : "Show"}
-					</Button>
-				</p>
-			</div>
-			<div className="space-y-2">
-				<div className="flex gap-2 items-center justify-end">
-					<span className="text-gray-600 text-xs">Vault:</span>
-					<span className="bg-gray-800 text-xs py-1 px-3 rounded-full text-zinc-200 font-semibold">
-						{password.vaultName}
-					</span>
-				</div>
-				{password.categoryName && (
-					<div className="flex items-center justify-end">
-						<span className="text-gray-600 text-xs">Category:</span>
-						<span
-							style={{ textDecorationColor: password.categoryColor }}
-							className="text-xs py-1 px-3 rounded-full font-semibold underline decoration-2 underline-offset-2"
+		<div className="bg-white shadow-md rounded-lg p-4">
+			<div className="flex flex-col md:flex-row md:justify-between md:items-center gap-4">
+				<div className="space-y-1">
+					<h3 className="text-lg font-semibold">{password.title}</h3>
+					<p className="text-gray-600">{password.username}</p>
+					<p className="text-gray-600 flex items-center flex-wrap gap-2">
+						Password: {showPassword ? password.password : "••••••••"}
+						<Button
+							variant="ghost"
+							size="sm"
+							onClick={() => setShowPassword(!showPassword)}
 						>
-							{password.categoryName}
+							{showPassword ? "Hide" : "Show"}
+						</Button>
+					</p>
+				</div>
+				<div className="space-y-2 mt-3 md:mt-0">
+					<div className="inline-flex lg:flex gap-2 items-center md:justify-end">
+						<span className="text-gray-600 text-xs">Vault:</span>
+						<span className="bg-gray-800 text-xs py-1 px-3 rounded-full text-zinc-200 font-semibold">
+							{password.vaultName}
 						</span>
 					</div>
-				)}
-				<div className="space-x-2">
-					<Button variant="outline" size="sm" onClick={() => onEdit(password)}>
-						Edit
-					</Button>
-					<Button
-						variant="destructive"
-						size="sm"
-						onClick={() => deletePassword(password.id)}
-					>
-						Delete
-					</Button>
+					{password.categoryName && (
+						<div className="inline-flex ml-4 lg:flex items-center gap-2 md:justify-end">
+							<span className="text-gray-600 text-xs">Category:</span>
+							<span
+								style={{ textDecorationColor: password.categoryColor }}
+								className="text-xs py-1 px-3 rounded-full font-semibold underline decoration-2 underline-offset-2"
+							>
+								{password.categoryName}
+							</span>
+						</div>
+					)}
+					<div className="flex gap-2 mt-3">
+						<Button
+							variant="outline"
+							size="sm"
+							onClick={() => onEdit(password)}
+						>
+							Edit
+						</Button>
+						<Button
+							variant="destructive"
+							size="sm"
+							onClick={() => deletePassword(password.id)}
+						>
+							Delete
+						</Button>
+					</div>
 				</div>
 			</div>
 		</div>

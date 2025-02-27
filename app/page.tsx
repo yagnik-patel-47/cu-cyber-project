@@ -83,7 +83,7 @@ export default async function HomePage() {
 
 				<section
 					id="features"
-					className="w-full py-12 md:py-12 lg:py-20 bg-gray-100"
+					className="w-full py-12 md:py-12 lg:py-20 bg-gray-100 scroll-m-20 lg:scroll-m-40"
 				>
 					<div className="container max-sm:px-4 mx-auto">
 						<div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">

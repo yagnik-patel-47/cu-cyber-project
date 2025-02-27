@@ -22,7 +22,10 @@ export default function VaultManager({
 	const createVaultWithUserId = createVault.bind(null, userId);
 	const [isAddingVault, setIsAddingVault] = useState(false);
 	// @ts-ignore
-	const [state, formAction] = useActionState(createVaultWithUserId, {});
+	const [state, formAction, isPending] = useActionState(
+		createVaultWithUserId,
+		{},
+	);
 
 	useEffect(() => {
 		if (state?.success) {
@@ -33,43 +36,54 @@ export default function VaultManager({
 	return (
 		<div className="space-y-4">
 			<h2 className="text-xl font-semibold">Manage Vaults</h2>
-			{initialVaults.map((vault) => (
-				<div key={vault.id} className="flex justify-between items-center">
-					<span>{vault.name}</span>
-					<Button
-						variant="destructive"
-						size="sm"
-						onClick={() => deleteVault(vault.id)}
-					>
-						Delete
-					</Button>
-				</div>
-			))}
-			<Dialog open={isAddingVault} onOpenChange={setIsAddingVault}>
-				<DialogTrigger asChild>
-					<Button>Add New Vault</Button>
-				</DialogTrigger>
-				<DialogContent>
-					<DialogHeader>
-						<DialogTitle>Add New Vault</DialogTitle>
-						<DialogDescription>
-							Create a new vault to organize your passwords.
-						</DialogDescription>
-					</DialogHeader>
-					<form action={formAction} className="space-y-4">
-						<Input placeholder="Vault Name" name="name" required />
-						<Textarea placeholder="Description" name="name" />
-						<Button type="submit">Add Vault</Button>
-						{state?.errors?.nested && (
-							<div className="text-red-500">
-								{Object.entries(state.errors.nested).map(([key, value]) => (
-									<p key={key}>{value[0]}</p>
-								))}
-							</div>
-						)}
-					</form>
-				</DialogContent>
-			</Dialog>
+
+			{!isPending ? (
+				<>
+					{initialVaults.map((vault) => (
+						<div key={vault.id} className="flex justify-between items-center">
+							<span>{vault.name}</span>
+							<Button
+								variant="destructive"
+								size="sm"
+								onClick={() => deleteVault(vault.id)}
+							>
+								Delete
+							</Button>
+						</div>
+					))}
+					<Dialog open={isAddingVault} onOpenChange={setIsAddingVault}>
+						<DialogTrigger asChild>
+							<Button>Add New Vault</Button>
+						</DialogTrigger>
+						<DialogContent>
+							<DialogHeader>
+								<DialogTitle>Add New Vault</DialogTitle>
+								<DialogDescription>
+									Create a new vault to organize your passwords.
+								</DialogDescription>
+							</DialogHeader>
+							<form action={formAction} className="space-y-4">
+								<Input placeholder="Vault Name" name="name" required />
+								<Textarea placeholder="Description" name="description" />
+								<Button type="submit">Add Vault</Button>
+								{state?.errors?.nested && (
+									<div className="text-red-500">
+										{Object.entries(state.errors.nested).map(([key, value]) => (
+											<p key={key}>{value[0]}</p>
+										))}
+									</div>
+								)}
+							</form>
+						</DialogContent>
+					</Dialog>
+				</>
+			) : (
+				<img
+					className="size-8 mx-auto my-10"
+					src="/loader.svg"
+					alt="loading icon"
+				/>
+			)}
 		</div>
 	);
 }

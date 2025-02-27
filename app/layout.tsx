@@ -28,7 +28,7 @@ export default function RootLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<html className={geistSans.variable} lang="en">
+		<html className={`${geistSans.variable} scroll-smooth`} lang="en">
 			<body className="antialiased">
 				<NuqsAdapter>{children}</NuqsAdapter>
 			</body>

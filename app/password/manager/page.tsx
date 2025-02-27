@@ -1,4 +1,3 @@
-import { Suspense } from "react";
 import PasswordList from "./_components/PasswordList";
 import VaultSelector from "./_components/VaultSelector";
 import CategorySelector from "./_components/CategorySelector";
@@ -73,13 +72,11 @@ export default async function Page({
 					/>
 				</div>
 				<div className="md:col-span-3">
-					<Suspense fallback={<div>Loading passwords...</div>}>
-						<PasswordList
-							passwords={allPasswords}
-							vaults={vaultsData}
-							categories={categoriesData}
-						/>
-					</Suspense>
+					<PasswordList
+						passwords={allPasswords}
+						vaults={vaultsData}
+						categories={categoriesData}
+					/>
 				</div>
 			</div>
 		</div>
