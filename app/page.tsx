@@ -7,6 +7,7 @@ import {
 	Lock,
 	Link as LinkLucide,
 	Newspaper,
+	Shield,
 } from "lucide-react";
 import Nav from "@/components/site-nav";
 import React from "react";
@@ -86,14 +87,14 @@ export default async function HomePage() {
 					className="w-full py-12 md:py-12 lg:py-20 bg-gray-100 scroll-m-20 lg:scroll-m-40"
 				>
 					<div className="container max-sm:px-4 mx-auto">
-						<div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
+						<div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-5">
 							<Link
 								href="/password/manager"
 								className="flex flex-col items-center space-y-4 text-center hover:bg-zinc-200 px-4 py-6 md:py-12 rounded-lg transition"
 							>
 								<Lock className="size-10 text-blue-700" />
 								<h2 className="text-xl font-bold">Password Manager</h2>
-								<p className="text-gray-500 dark:text-gray-400">
+								<p className="text-gray-500 dark:text-gray-400 text-sm">
 									Securely store and manage all your passwords in one place.
 								</p>
 							</Link>
@@ -103,7 +104,7 @@ export default async function HomePage() {
 							>
 								<Newspaper className="size-10 text-blue-700" />
 								<h2 className="text-xl font-bold">Cybersecurity News</h2>
-								<p className="text-gray-500 dark:text-gray-400">
+								<p className="text-gray-500 dark:text-gray-400 text-sm">
 									Stay informed with the latest cybersecurity news and trends.
 								</p>
 							</Link>
@@ -113,7 +114,7 @@ export default async function HomePage() {
 							>
 								<LinkLucide className="size-10 text-blue-700" />
 								<h2 className="text-xl font-bold">Phishing URL Checker</h2>
-								<p className="text-gray-500 dark:text-gray-400">
+								<p className="text-gray-500 dark:text-gray-400 text-sm">
 									Verify suspicious links to protect yourself from phishing
 									attacks.
 								</p>
@@ -124,8 +125,19 @@ export default async function HomePage() {
 							>
 								<AlertTriangle className="size-10 text-blue-700" />
 								<h2 className="text-xl font-bold">Data Breach Checker</h2>
-								<p className="text-gray-500 dark:text-gray-400">
+								<p className="text-gray-500 dark:text-gray-400 text-sm">
 									Find out if your data has been compromised in known breaches
+								</p>
+							</Link>
+							<Link
+								href="/vulnerability-scanner"
+								className="flex flex-col items-center space-y-4 text-center hover:bg-zinc-200 px-4 py-6 md:py-12 rounded-lg transition"
+							>
+								<Shield className="size-10 text-blue-700" />
+								<h2 className="text-xl font-bold">Vulnerability Scanner</h2>
+								<p className="text-gray-500 dark:text-gray-400 text-sm">
+									Search and monitor software vulnerabilities from the NVD
+									database
 								</p>
 							</Link>
 						</div>

@@ -93,6 +93,13 @@ export default async function Nav({ fixed = false }) {
 								</Link>
 							</NavigationMenuItem>
 							<NavigationMenuItem>
+								<Link legacyBehavior passHref href="/vulnerability-scanner">
+									<NavigationMenuLink className={navigationMenuTriggerStyle()}>
+										Vulnerability Scanner
+									</NavigationMenuLink>
+								</Link>
+							</NavigationMenuItem>
+							<NavigationMenuItem>
 								{session.user ? (
 									<NavigationMenuLink
 										href="/signout"

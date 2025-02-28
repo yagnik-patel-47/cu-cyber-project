@@ -7,7 +7,7 @@ import {
 	SheetTitle,
 } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
-import { Menu } from "lucide-react";
+import { Menu, ShieldAlert } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 
@@ -54,20 +54,26 @@ export function MobileNavWrapper({ session }: { session: any }) {
 					</Link>
 					<Link
 						href="/data-breach"
-						className="text-zinc-200 hover:text-white block mb-[100%]"
+						className="text-zinc-200 hover:text-white block"
 						onClick={() => setOpen(false)}
 					>
 						Data Breach Check
 					</Link>
-					{/* <div className="h-full w-full" /> */}
+					<Link
+						href="/vulnerability-scanner"
+						className="text-zinc-200 hover:text-white block"
+						onClick={() => setOpen(false)}
+					>
+						Vulnerability Scanner
+					</Link>
 					{session.user ? (
-						<Link
+						<a
 							href="/signout"
 							className="block bg-zinc-100/10 text-zinc-200 py-2 px-4 rounded-md"
 							onClick={() => setOpen(false)}
 						>
 							Sign out
-						</Link>
+						</a>
 					) : (
 						<Link
 							href="/login"
